@@ -5,7 +5,6 @@
   <li id="login-dropdown-list" class="dropdown">
     <a class="dropdown-toggle"  data-toggle="dropdown">
       {{displayName}}
-      <b class="caret"></b>
     </a>
     <div class="dropdown-menu col-sm-3">
       {{#if inMessageOnlyFlow}}
@@ -26,10 +25,6 @@
     {{> _loginButtonsAdditionalLoggedInDropdownActions}}
   {{/if}}
 
-  {{#if allowChangingPassword}}
-    <button class="btn btn-default btn-block" id="login-buttons-open-change-password">Change password</button>
-  {{/if}}
-
   <button class="btn btn-block btn-primary" id="login-buttons-logout">Sign out</button>
 </template>
 
@@ -40,7 +35,6 @@
   <li id="login-dropdown-list" class="dropdown">
     <a class="dropdown-toggle"  data-toggle="dropdown">
       Sign In{{#unless forbidClientAccountCreation}} / Up{{/unless}}
-      <b class="caret"></b>
     </a>
     <div class="dropdown-menu">
       {{> _loginButtonsLoggedOutAllServices}}
@@ -53,14 +47,9 @@
   {{#unless hasPasswordService}}
     {{> _loginButtonsMessages}}
   {{/unless}}
-    {{#if isPasswordService}}
-      {{#if hasOtherServices}} {{! the password service will always come last }}
-        {{> _loginButtonsLoggedOutPasswordServiceSeparator}}
-      {{/if}}
-      {{> _loginButtonsLoggedOutPasswordService}}
-    {{else}}
+    {{#unless isPasswordService}}
       {{> _loginButtonsLoggedOutSingleLoginButton}}
-    {{/if}}
+    {{/unless}}
   {{/each}}
 </template>
 
